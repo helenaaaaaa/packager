@@ -1,0 +1,11 @@
+image: openjdk:17-alpine
+
+stages:
+  - qa
+
+"Is questionnaire filled out?":
+  stage: qa
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+  script:
+    - if [[ $(grep -c 'YOUR ANSWER HERE' README.md) -gt 0 ]]; then echo "Please fill out the Questionnaire section in the README.md"; exit 1 ;fi
