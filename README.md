@@ -17,18 +17,27 @@ We care very much about our recruitment process in general and about the case st
 ### ⏱️ How many hours did you spend on completing the task?
 
 YOUR ANSWER HERE
+Approximately 10 hours.
 
 ### 🤷 Are you happy with your solution/submission?
 
 YOUR ANSWER HERE
+More or less. It could be better once I have more time for development and research for the best problem solution.
 
 ### 🛠 What would you improve if you had more time to work on the task?
 
 YOUR ANSWER HERE
+1) Improve approach to find optimal package contents (make it faster and less memory consumptive)
+2) Apply more complex custom error messages structure
+3) Add metrics for measuring solution execution
+4) Improve validation mechanism
+5) Add logs
+6) Come to 100% test coverage
 
 ### 😤 What are the difficulties/problems you faced while doing the task?
 
 YOUR ANSWER HERE
+The main difficulty was to find an optimal algorithm for the given problem.
 
 ### 💬 Any free form feedback you would like to share with us?
 

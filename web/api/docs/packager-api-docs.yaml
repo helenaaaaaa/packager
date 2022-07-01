@@ -1,0 +1,101 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: 'Find best package content API '
+  description: >-
+    Calculate package content with the highest total price that doesn't exceed weight limit
+  termsOfService: 'https://www.unite.com/termsOService'
+  contact:
+    email: unite@unite.com
+paths:
+  '/api/v1/packages/estimates':
+    post:
+      tags:
+        - Best Package Estimate
+      summary: 'Calculate best package content based on highest total price with total weight limit'
+      operationId: postBestPackageEstimate
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PackageInDto'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PackageOutDto'
+        '400':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDto'
+components:
+  schemas:
+    PackageInDto:
+      type: object
+      properties:
+        maxWeight:
+          type: number
+          example: 56.83
+        weightUnit:
+          type: string
+          example: 'kg'
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ItemDto'
+    ItemDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        weight:
+          type: number
+          example: 15.76
+        weightUnit:
+          type: string
+          enum:
+            - 'Gt'
+            - 'Mt'
+            - 't'
+            - 'kg'
+            - 'g'
+            - 'mg'
+          example: 'kg'
+        price:
+          type: number
+          example: 10.50
+        currency:
+          type: string
+          enum:
+            - 'EUR'
+            - 'USD'
+            - 'GBP'
+            - 'AUD'
+            - 'CAD'
+            - 'CHF'
+            - 'JPY'
+            - 'CNH'
+            - 'NZD'
+            - 'HKD'
+          example: 1
+    PackageOutDto:
+      properties:
+        totalPrice:
+          type: number
+          example: 135.82
+        items:
+          type: array
+          items:
+            type: integer
+            example: 2
+    ErrorDto:
+      properties:
+        message:
+          type: string
+          example: 'Weight value should be greater than 0 and less than 100 (KG)'
